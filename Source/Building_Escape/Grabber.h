@@ -18,12 +18,6 @@ public:
 	// Sets default values for this component's properties
 	UGrabber();
 	
-	void Grab();
-	void Release();
-	void FindPhysicsHandle();
-	void SetupInputComponent();
-
-	FHitResult GetFirstPhysicsBodyInReach() const;
 
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -34,6 +28,14 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
+	void Grab() const;
+	void Release() const;
+	void FindPhysicsHandle();
+	void SetupInputComponent();
+
+	FHitResult GetFirstPhysicsBodyInReach() const;
+	FVector GetPlayerReach() const;
+	FVector GetPlayerPositionInWorld() const;
 
 	UPROPERTY(EditAnywhere)
 	float Reach {100.f};
